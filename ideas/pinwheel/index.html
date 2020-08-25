@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pinwheel</title>
+  <!--
+    https://upload.wikimedia.org/wikipedia/commons/5/5c/Haigh_Windmill_1.jpg
+    https://cdn5.vectorstock.com/i/1000x1000/23/84/colorful-paper-pinwheel-vector-5022384.jpg
+  -->
+
+  <style>
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-size: 62.5%;
+  }
+
+  html, body, main {
+    height: 100vh;
+  }
+
+  main {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 10vh;
+    background: #b4e9ff;
+  }
+
+  @keyframes rotate-flower {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .pinwheel {
+    position: relative;
+    z-index: 10;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .flower {
+    width: 50vh;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+
+    animation-name: rotate-flower;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+  }
+
+  .flower:after {
+    content: "";
+    position: absolute;
+    width: 4%;
+    height: 4%;
+    left: 48%;
+    top: 48%;
+    z-index: 10;
+    border-radius: 50%;
+    background: linear-gradient(45deg, lightgray 0%, darkgrey 100%);
+  }
+
+  .flower:hover {
+    animation-play-state: running;
+  }
+
+  .petal {
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
+
+  .petal-1 {
+    background-image: linear-gradient(135deg, transparent 0%, transparent 67%, #39C60B 67%, #018300 100%),
+      linear-gradient(45deg, #018300 0%, #39C60B 67%, transparent 67%);
+    transform: rotate(-90deg);
+  }
+
+  .petal-2 {
+    background-image: linear-gradient(135deg, transparent 0%, transparent 67%, #A60000 67%, #F70000 100%),
+      linear-gradient(45deg, #F70000 0%, #A60000 67%, transparent 67%);
+  }
+
+  .petal-3 {
+    background-image: linear-gradient(135deg, transparent 0%, transparent 67%, #0779C0 67%, #25A6DF 100%),
+      linear-gradient(45deg, #25A6DF 0%, #0779C0 67%, transparent 67%);
+    transform: rotate(180deg);
+  }
+
+  .petal-4 {
+    background-image: linear-gradient(135deg, transparent 0%, transparent 67%, #FDA400 67%, #FEFF01 100%),
+      linear-gradient(45deg, #FEFF01 0%, #FDA400 67%, transparent 67%);
+    transform: rotate(90deg);
+  }
+
+  .stem {
+    width: 1.75vh;
+    height: 75vh;
+    margin-top: -25vh;
+    border-right: 0.4vh solid #C09761;
+    background: #E7CB9B;
+  }
+
+  @keyframes move-clouds {
+    from {
+      transform: translate(-100%);
+    }
+
+    to {
+      transform: translate(100%);
+    }
+  }
+
+  .clouds {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    animation-name: move-clouds;
+    animation-duration: 44s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    /*animation-play-state: paused;*/
+  }
+
+  .clouds-2 {
+    transform: translate(-100%);
+    animation-delay: 22s;
+  }
+
+  .cloud,
+  .cloud:before,
+  .cloud:after {
+    position: relative;
+    width: 30rem;
+    height: 10rem;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .cloud:before,
+  .cloud:after {
+    content: "";
+    position: absolute;
+    left: 16%;
+    top: 0;
+    width: 68%;
+    border-radius: 5rem;
+    transform: rotate(35deg);
+  }
+
+  .cloud:after {
+    transform: rotate(-35deg);
+  }
+
+  .cloud-1 {
+    margin-left: 10%;
+  }
+
+  .cloud-2 {
+    align-self: flex-end;
+  }
+
+  .cloud-4 {
+    align-self: center;
+  }
+
+  .cloud-6 {
+    align-self: flex-end;
+  }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="clouds clouds-1">
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+    </div>
+    <div class="clouds clouds-2">
+      <div class="cloud cloud-4"></div>
+      <div class="cloud cloud-5"></div>
+      <div class="cloud cloud-6"></div>
+    </div>
+    <div class="pinwheel">
+      <div class="flower">
+        <div class="petal petal-1"></div>
+        <div class="petal petal-2"></div>
+        <div class="petal petal-3"></div>
+        <div class="petal petal-4"></div>
+      </div>
+      <div class="stem"></div>
+    </div>
+  </main>
+</body>
+</html>
